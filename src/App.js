@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Card from "./Card"
+import NumberInput from "./NumberInput"
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+class App extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            numberToMultiply:0
+        }
+
+    }
+    render(){
+        const {numberToMultiply} = this.state
+    return<div><NumberInput numberInputOnChange={number=>{
+        this.setState({
+            numberToMultiply : number
+        })
+    }}/>
+    <Card multiplier={numberToMultiply} factor={2}/>
+    <Card multiplier={numberToMultiply} factor={5}/>
+    <Card multiplier={numberToMultiply} factor={10}/>
+    </div>    
+    }
+
+
 }
 
-export default App;
+export default App
+
+
